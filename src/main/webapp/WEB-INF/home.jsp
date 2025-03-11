@@ -40,11 +40,13 @@
                     <td><c:out value="${recipe.prepTime}" /></td>
                     <td><c:out value="${recipe.cookTime}" /></td>
                     <td>
+                    <c:if test="${recipe.user.id == userId }">
                         <a href="/recipe/${recipe.id}/update" class="btn edit-btn">Edit</a>
                         <form action="/recipe/${recipe.id}/delete" method="post" style="display:inline;">
                             <input type="hidden" name="_method" value="DELETE" />
                             <button type="submit" class="btn delete-btn">Delete</button>
                         </form>
+                    </c:if>
                     </td>
                 </tr>
             </c:forEach>

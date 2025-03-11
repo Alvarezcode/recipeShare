@@ -18,13 +18,12 @@ import com.codingdojo.recipeShare.repositories.UserRepository;
 public class UserService {
 	@Autowired
 	UserRepository userRepo;
-// TO-DO: Write register and login methods!
+	
 	public User register(User newUser, BindingResult result) {
 		Optional<User> potentialUser = userRepo.findByEmail(newUser.getEmail());
 		if(potentialUser.isPresent()) {
 			result.rejectValue("email", "Matches", "email already exist");
 		}
-		// TO-DO: Additional validations!
 		if(!newUser.getPassword().equals(newUser.getConfirm())) {
 			result.rejectValue("confirm", "Matches", "passwords do not match");
 		}
